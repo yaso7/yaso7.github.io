@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Developer Portfolio</title>
+  <meta name="description" content="A portfolio website showcasing web development projects and skills">
+  
+  <!-- Font import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Feather Icons (similar to Lucide) -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <style>
+    /* CSS Reset and Base Styles */
+    :root {
+      /* Light theme variables (not used by default) */
+      --light-background: 0 0% 100%;
+      --light-foreground: 222.2 84% 4.9%;
+      --light-card: 0 0% 100%;
+      --light-card-foreground: 222.2 84% 4.9%;
+      --light-popover: 0 0% 100%;
+      --light-popover-foreground: 222.2 84% 4.9%;
+      --light-primary: 221.2 83.2% 53.3%;
+      --light-primary-foreground: 210 40% 98%;
+      --light-secondary: 210 40% 96.1%;
+      --light-secondary-foreground: 222.2 47.4% 11.2%;
+      --light-muted: 210 40% 96.1%;
+      --light-muted-foreground: 215.4 16.3% 46.9%;
+      --light-accent: 210 40% 96.1%;
+      --light-accent-foreground: 222.2 47.4% 11.2%;
+      --light-destructive: 0 84.2% 60.2%;
+      --light-destructive-foreground: 210 40% 98%;
+      --light-border: 214.3 31.8% 91.4%;
+      --light-input: 214.3 31.8% 91.4%;
+      --light-ring: 221.2 83.2% 53.3%;
+      
+      /* Dark theme variables (used by default) */
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+      --primary: 217.2 91.2% 59.8%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 224.3 76.5% 48%;
+      --radius: 0.5rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.5;
+    }
+
+    /* Layout */
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .gap-3 {
+      gap: 0.75rem;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+
+    .gap-8 {
+      gap: 2rem;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .min-h-screen {
+      min-height: 100vh;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .max-w-2xl {
+      max-width: 42rem;
+    }
+
+    .max-w-3xl {
+      max-width: 48rem;
+    }
+
+    .max-w-4xl {
+      max-width: 56rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .ml-2 {
+      margin-left: 0.5rem;
+    }
+
+    .mr-1 {
+      margin-right: 0.25rem;
+    }
+
+    .space-y-1 > * + * {
+      margin-top: 0.25rem;
+    }
+
+    .space-y-2 > * + * {
+      margin-top: 0.5rem;
+    }
+
+    .space-y-3 > * + * {
+      margin-top: 0.75rem;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+
+    .space-y-8 > * + * {
+      margin-top: 2rem;
+    }
+
+    .pt-4 {
+      padding-top: 1rem;
+    }
+
+    .pt-6 {
+      padding-top: 1.5rem;
+    }
+
+    .pt-8 {
+      padding-top: 2rem;
+    }
+
+    .p-4 {
+      padding: 1rem;
+    }
+
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .px-3 {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .py-6 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .py-16 {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .py-24 {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .pl-4 {
+      padding-left: 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .fixed {
+      position: fixed;
+    }
+
+    .sticky {
+      position: sticky;
+    }
+
+    .top-0 {
+      top: 0;
+    }
+
+    .bottom-8 {
+      bottom: 2rem;
+    }
+
+    .right-8 {
+      right: 2rem;
+    }
+
+    .z-50 {
+      z-index: 50;
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .rounded-md {
+      border-radius: var(--radius);
+    }
+
+    .rounded-full {
+      border-radius: 9999px;
+    }
+
+    .rounded-lg {
+      border-radius: var(--radius);
+    }
+
+    .border {
+      border: 1px solid hsl(var(--border));
+    }
+
+    .border-t {
+      border-top: 1px solid hsl(var(--border));
+    }
+
+    .border-b {
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .border-l-2 {
+      border-left-width: 2px;
+    }
+
+    .border-primary {
+      border-color: hsl(var(--primary));
+    }
+
+    .border-4 {
+      border-width: 4px;
+    }
+
+    .bg-background {
+      background-color: hsl(var(--background));
+    }
+
+    .bg-primary {
+      background-color: hsl(var(--primary));
+    }
+
+    .bg-primary\/10 {
+      background-color: hsl(var(--primary) / 0.1);
+    }
+
+    .bg-primary\/20 {
+      background-color: hsl(var(--primary) / 0.2);
+    }
+
+    .bg-muted\/40 {
+      background-color: hsl(var(--muted) / 0.4);
+    }
+
+    .bg-secondary {
+      background-color: hsl(var(--secondary));
+    }
+
+    .bg-card {
+      background-color: hsl(var(--card));
+    }
+
+    .text-primary {
+      color: hsl(var(--primary));
+    }
+
+    .text-muted-foreground {
+      color: hsl(var(--muted-foreground));
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-xs {
+      font-size: 0.75rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .text-3xl {
+      font-size: 1.875rem;
+    }
+
+    .text-4xl {
+      font-size: 2.25rem;
+    }
+
+    .text-6xl {
+      font-size: 3.75rem;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .shadow-lg {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    .backdrop-blur {
+      backdrop-filter: blur(8px);
+    }
+
+    /* Components */
+    .header {
+      height: 4rem;
+      background-color: hsl(var(--background) / 0.95);
+      backdrop-filter: blur(8px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background-color: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+    }
+
+    .badge-outline {
+      background-color: transparent;
+      border: 1px solid hsl(var(--border));
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
+      height: 2.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s, opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background-color: hsl(var(--primary) / 0.9);
+    }
+
+    .button-outline {
+      background-color: transparent;
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--foreground));
+    }
+
+    .button-outline:hover {
+      background-color: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+    }
+
+    .button-sm {
+      height: 2rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .button-icon {
+      height: 2.5rem;
+      width: 2.5rem;
+      padding: 0;
+    }
+
+    .card {
+      background-color: hsl(var(--card));
+      border-radius: var(--radius);
+      border: 1px solid hsl(var(--border));
+      overflow: hidden;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .input {
+      display: flex;
+      height: 2.5rem;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid hsl(var(--input));
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px hsl(var(--ring));
+    }
+
+    .textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .tabs {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tabs-list {
+      display: flex;
+      border-bottom: 1px solid hsl(var(--border));
+      margin-bottom: 1rem;
+    }
+
+    .tab {
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .tab[aria-selected="true"] {
+      border-bottom-color: hsl(var(--primary));
+      color: hsl(var(--primary));
+    }
+
+    .tabs-content {
+      display: none;
+    }
+
+    .tabs-content[data-active="true"] {
+      display: block;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .scroll-to-top {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 50;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .scroll-to-top.visible {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .icon-sm {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .icon-lg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    /* Parallax elements */
+    .parallax-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-element {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .dot-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 2rem;
+    }
+
+    .dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background-color: hsl(var(--primary) / 0.2);
+    }
+
+    .circle {
+      border-radius: 50%;
+      background-color: hsl(var(--primary) / 0.15);
+    }
+
+    .shape {
+      background-color: hsl(var(--primary) / 0.15);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover effects */
+    .hover-underline:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .md\:flex {
+        display: flex;
+      }
+
+      .md\:flex-row {
+        flex-direction: row;
+      }
+
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .md\:grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .md\:text-left {
+        text-align: left;
+      }
+
+      .md\:text-6xl {
+        font-size: 3.75rem;
+      }
+
+      .md\:py-32 {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+      }
+
+      .md\:py-8 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      .md\:w-80 {
+        width: 20rem;
+      }
+
+      .md\:h-80 {
+        height: 20rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* Hide mobile nav by default */
+    .mobile-nav {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .hidden-mobile {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+    }
+
+    /* Dark theme specific styles */
+    .dark-section {
+      background-color: hsl(var(--background) / 0.7);
+    }
+
+    .darker-section {
+      background-color: hsl(var(--card));
+    }
+  </style>
+</head>
+<body>
+  <div class="flex min-h-screen flex-col">
+    <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <div class="container flex h-16 items-center justify-between">
+        <a href="#" class="flex items-center gap-2 font-bold text-xl">
+          <i data-feather="code" class="icon"></i>
+          <span>DevPortfolio</span>
+        </a>
+        <nav class="hidden-mobile md:flex gap-6">
+          <a href="#about" class="text-sm font-medium hover-underline">About</a>
+          <a href="#skills" class="text-sm font-medium hover-underline">Skills</a>
+          <a href="#projects" class="text-sm font-medium hover-underline">Projects</a>
+          <a href="#contact" class="text-sm font-medium hover-underline">Contact</a>
+        </nav>
+        <a href="#contact" class="button">Let's Talk</a>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <!-- Hero Section with Parallax -->
+      <section class="container py-24 md:py-32 space-y-8 relative overflow-hidden parallax-container">
+        <!-- Parallax background elements -->
+        <div class="parallax-element dot-grid top-0 right-0 opacity-30" data-speed="0.2"></div>
+        <div class="parallax-element top-20 left-10 opacity-20" data-speed="0.2">
+          <div class="circle" style="width: 10rem; height: 10rem;"></div>
+        </div>
+        <div class="parallax-element bottom-10 right-10 opacity-20" data-speed="0.3" data-direction="horizontal">
+          <div class="circle" style="width: 15rem; height: 15rem;"></div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+          <div class="flex-1 space-y-4">
+            <div class="fade-in" data-delay="100">
+              <span class="badge badge-outline text-sm">Available for hire</span>
+            </div>
+            <div class="fade-in" data-delay="200">
+              <h1 class="text-4xl md:text-6xl font-bold">
+                Hi, I'm <span class="text-primary">Alex</span> <br />
+                Full Stack Developer
+              </h1>
+            </div>
+            <div class="fade-in" data-delay="300">
+              <p class="text-xl text-muted-foreground">
+                I build accessible, user-friendly web applications that solve real-world problems.
+              </p>
+            </div>
+            <div class="fade-in" data-delay="400">
+              <div class="flex gap-4">
+                <a href="#projects" class="button">
+                  View Projects <i data-feather="arrow-right" class="icon-sm ml-2"></i>
+                </a>
+                <a href="#contact" class="button button-outline">Contact Me</a>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex justify-center fade-in" data-delay="300">
+            <div class="relative w-72 h-72 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-primary">
+              <img src="https://placehold.co/320x320" alt="Developer portrait" class="object-cover w-full h-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section with Parallax -->
+      <section id="about" class="dark-section py-16 relative overflow-hidden parallax-container">
+        <!-- Parallax background elements -->
+        <div class="parallax-element top-0 left-0 opacity-30" data-speed="0.3">
+          <svg width="600" height="400" viewBox="0 0 600 400" fill="none">
+            <path d="M0 100C100 80 150 120 250 100C350 80 400 120 500 100C600 80 650 120 750 100" 
+                  stroke="currentColor" stroke-opacity="0.2" stroke-width="2" fill="none"></path>
+            <path d="M0 150C100 130 150 170 250 150C350 130 400 170 500 150C600 130 650 170 750 150" 
+                  stroke="currentColor" stroke-opacity="0.2" stroke-width="2" fill="none"></path>
+            <path d="M0 200C100 180 150 220 250 200C350 180 400 220 500 200C600 180 650 220 750 200" 
+                  stroke="currentColor" stroke-opacity="0.2" stroke-width="2" fill="none"></path>
+          </svg>
+        </div>
+        <div class="parallax-element bottom-0 right-0 opacity-20" data-speed="0.4" data-direction="horizontal" data-reverse="true">
+          <div class="circle" style="width: 20rem; height: 20rem; background-color: hsl(var(--primary) / 0.15);"></div>
+        </div>
+
+        <div class="container space-y-6 relative z-10">
+          <div class="fade-in">
+            <div class="space-y-2 text-center">
+              <span class="badge">About Me</span>
+              <h2 class="text-3xl font-bold">My Background</h2>
+              <p class="text-muted-foreground max-w-2xl mx-auto">
+                With over 5 years of experience in web development, I specialize in creating responsive, accessible,
+                and performant web applications.
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8 pt-8">
+            <div class="space-y-4 fade-in" data-delay="200">
+              <h3 class="text-xl font-semibold">My Journey</h3>
+              <p class="text-muted-foreground">
+                I started my journey as a self-taught developer, learning HTML, CSS, and JavaScript. Over the years,
+                I've expanded my skills to include modern frameworks and technologies like React, Next.js, Node.js,
+                and more.
+              </p>
+              <p class="text-muted-foreground">
+                I've worked with startups and established companies, helping them build and scale their web
+                applications. My focus is always on creating intuitive user experiences while maintaining clean,
+                efficient code.
+              </p>
+              <div class="pt-4">
+                <a href="#" class="button button-outline">Download Resume</a>
+              </div>
+            </div>
+            <div class="space-y-4 fade-in" data-delay="300">
+              <h3 class="text-xl font-semibold">Education & Experience</h3>
+              <div class="space-y-4">
+                <div class="border-l-2 border-primary pl-4 space-y-1">
+                  <h4 class="font-medium">Senior Frontend Developer</h4>
+                  <p class="text-sm text-muted-foreground">TechCorp Inc. • 2021 - Present</p>
+                </div>
+                <div class="border-l-2 border-primary pl-4 space-y-1">
+                  <h4 class="font-medium">Full Stack Developer</h4>
+                  <p class="text-sm text-muted-foreground">WebSolutions • 2019 - 2021</p>
+                </div>
+                <div class="border-l-2 border-primary pl-4 space-y-1">
+                  <h4 class="font-medium">Junior Developer</h4>
+                  <p class="text-sm text-muted-foreground">StartupXYZ • 2018 - 2019</p>
+                </div>
+                <div class="border-l-2 border-primary pl-4 space-y-1">
+                  <h4 class="font-medium">B.S. Computer Science</h4>
+                  <p class="text-sm text-muted-foreground">Tech University • 2014 - 2018</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section with Parallax -->
+      <section id="skills" class="py-16 container relative overflow-hidden parallax-container">
+        <!-- Parallax background elements -->
+        <div class="parallax-element top-20 left-20" data-speed="0.2">
+          <div class="circle" style="width: 4rem; height: 4rem;"></div>
+        </div>
+        <div class="parallax-element top-40 right-40" data-speed="0.3" data-direction="horizontal">
+          <div class="shape" style="width: 6rem; height: 6rem; transform: rotate(45deg);"></div>
+        </div>
+        <div class="parallax-element bottom-60 left-1/3" data-speed="0.4" data-reverse="true">
+          <div class="shape" style="width: 5rem; height: 5rem; border-radius: 0.5rem; transform: rotate(12deg);"></div>
+        </div>
+
+        <div class="space-y-6 relative z-10">
+          <div class="fade-in">
+            <div class="space-y-2 text-center">
+              <span class="badge">Skills</span>
+              <h2 class="text-3xl font-bold">My Expertise</h2>
+              <p class="text-muted-foreground max-w-2xl mx-auto">
+                I've worked with a variety of technologies and frameworks to create modern web applications.
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
+            <div class="card fade-in" data-delay="100">
+              <div class="card-content text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center bg-primary/20 mx-auto mb-4">
+                  <i data-feather="code" class="icon text-primary"></i>
+                </div>
+                <h3 class="font-semibold mb-2">Frontend</h3>
+                <p class="text-sm text-muted-foreground">React, Next.js, TypeScript, Tailwind CSS</p>
+              </div>
+            </div>
+            <div class="card fade-in" data-delay="200">
+              <div class="card-content text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center bg-primary/20 mx-auto mb-4">
+                  <i data-feather="server" class="icon text-primary"></i>
+                </div>
+                <h3 class="font-semibold mb-2">Backend</h3>
+                <p class="text-sm text-muted-foreground">Node.js, Express, PostgreSQL, MongoDB</p>
+              </div>
+            </div>
+            <div class="card fade-in" data-delay="300">
+              <div class="card-content text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center bg-primary/20 mx-auto mb-4">
+                  <i data-feather="database" class="icon text-primary"></i>
+                </div>
+                <h3 class="font-semibold mb-2">DevOps</h3>
+                <p class="text-sm text-muted-foreground">Docker, CI/CD, AWS, Vercel</p>
+              </div>
+            </div>
+            <div class="card fade-in" data-delay="400">
+              <div class="card-content text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center bg-primary/20 mx-auto mb-4">
+                  <i data-feather="tool" class="icon text-primary"></i>
+                </div>
+                <h3 class="font-semibold mb-2">Tools</h3>
+                <p class="text-sm text-muted-foreground">Git, GitHub, VS Code, Figma</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section with Parallax -->
+      <section id="projects" class="dark-section py-16 relative overflow-hidden parallax-container">
+        <!-- Parallax background elements -->
+        <div class="parallax-element top-10 left-10 opacity-20 dot-grid" data-speed="0.3"></div>
+        <div class="parallax-element bottom-0 right-0 opacity-15" data-speed="0.2" data-direction="horizontal">
+          <div class="circle" style="width: 24rem; height: 24rem;"></div>
+        </div>
+
+        <div class="container space-y-6 relative z-10">
+          <div class="fade-in">
+            <div class="space-y-2 text-center">
+              <span class="badge">Projects</span>
+              <h2 class="text-3xl font-bold">My Work</h2>
+              <p class="text-muted-foreground max-w-2xl mx-auto">
+                Here are some of the projects I've worked on. Each project showcases different skills and
+                technologies.
+              </p>
+            </div>
+          </div>
+          <div class="tabs w-full max-w-3xl mx-auto">
+            <div class="tabs-list grid grid-cols-4 mb-8">
+              <button class="tab" data-tab="all" aria-selected="true">All</button>
+              <button class="tab" data-tab="frontend">Frontend</button>
+              <button class="tab" data-tab="fullstack">Full Stack</button>
+              <button class="tab" data-tab="mobile">Mobile</button>
+            </div>
+            <div class="tabs-content" data-tab="all" data-active="true">
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projects will be inserted here by JavaScript -->
+              </div>
+            </div>
+            <div class="tabs-content" data-tab="frontend">
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Frontend projects will be inserted here by JavaScript -->
+              </div>
+            </div>
+            <div class="tabs-content" data-tab="fullstack">
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Fullstack projects will be inserted here by JavaScript -->
+              </div>
+            </div>
+            <div class="tabs-content" data-tab="mobile">
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Mobile projects will be inserted here by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section with Parallax -->
+      <section id="contact" class="py-16 container relative overflow-hidden parallax-container">
+        <!-- Parallax background elements -->
+        <div class="parallax-element bottom-0 right-0 opacity-20" data-speed="0.4">
+          <svg width="600" height="400" viewBox="0 0 600 400" fill="none">
+            <path d="M0 100C100 80 150 120 250 100C350 80 400 120 500 100C600 80 650 120 750 100" 
+                  stroke="currentColor" stroke-opacity="0.15" stroke-width="2" fill="none"></path>
+            <path d="M0 150C100 130 150 170 250 150C350 130 400 170 500 150C600 130 650 170 750 150" 
+                  stroke="currentColor" stroke-opacity="0.15" stroke-width="2" fill="none"></path>
+            <path d="M0 200C100 180 150 220 250 200C350 180 400 220 500 200C600 180 650 220 750 200" 
+                  stroke="currentColor" stroke-opacity="0.15" stroke-width="2" fill="none"></path>
+          </svg>
+        </div>
+        <div class="parallax-element top-20 left-20 opacity-15" data-speed="0.3">
+          <div class="circle" style="width: 15rem; height: 15rem;"></div>
+        </div>
+
+        <div class="space-y-6 relative z-10">
+          <div class="fade-in">
+            <div class="space-y-2 text-center">
+              <span class="badge">Contact</span>
+              <h2 class="text-3xl font-bold">Get In Touch</h2>
+              <p class="text-muted-foreground max-w-2xl mx-auto">
+                Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8 pt-8 max-w-4xl mx-auto">
+            <div class="space-y-4 fade-in" data-delay="200">
+              <h3 class="text-xl font-semibold">Contact Information</h3>
+              <p class="text-muted-foreground">
+                I'm currently available for freelance work and full-time positions. If you have a project that needs
+                some creative touch, I'd love to hear about it!
+              </p>
+              <div class="space-y-3 pt-4">
+                <div class="flex items-center gap-3 fade-in" data-delay="300">
+                  <i data-feather="mail" class="icon text-primary"></i>
+                  <span>alex@example.com</span>
+                </div>
+                <div class="flex items-center gap-3 fade-in" data-delay="400">
+                  <i data-feather="linkedin" class="icon text-primary"></i>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                    linkedin.com/in/alexdev
+                  </a>
+                </div>
+                <div class="flex items-center gap-3 fade-in" data-delay="500">
+                  <i data-feather="github" class="icon text-primary"></i>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                    github.com/alexdev
+                  </a>
+                </div>
+                <div class="flex items-center gap-3 fade-in" data-delay="600">
+                  <i data-feather="twitter" class="icon text-primary"></i>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                    @alexdev
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-4 fade-in" data-delay="300">
+              <h3 class="text-xl font-semibold">Send Me a Message</h3>
+              <form class="space-y-4">
+                <div class="grid gap-4">
+                  <div class="grid gap-2">
+                    <label for="name" class="text-sm font-medium">Name</label>
+                    <input id="name" class="input" placeholder="Your name" />
+                  </div>
+                  <div class="grid gap-2">
+                    <label for="email" class="text-sm font-medium">Email</label>
+                    <input id="email" type="email" class="input" placeholder="Your email" />
+                  </div>
+                  <div class="grid gap-2">
+                    <label for="message" class="text-sm font-medium">Message</label>
+                    <textarea id="message" class="input textarea" placeholder="Your message"></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="button w-full">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t py-6 md:py-8">
+      <div class="container flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+        <div class="flex items-center gap-2 font-semibold">
+          <i data-feather="code" class="icon-sm"></i>
+          <span>DevPortfolio</span>
+        </div>
+        <div class="text-sm text-muted-foreground">
+          © <span id="current-year"></span> Alex Developer. All rights reserved.
+        </div>
+        <div class="flex gap-4">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i data-feather="github" class="icon"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i data-feather="linkedin" class="icon"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <i data-feather="twitter" class="icon"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top button button-icon rounded-full shadow-lg" aria-label="Scroll to top">
+      <i data-feather="arrow-up" class="icon-sm"></i>
+    </button>
+  </div>
+
+  <script>
+    // Project data
+    const projects = [
+      {
+        title: "E-commerce Platform",
+        description: "A full-stack e-commerce platform with payment integration and admin dashboard.",
+        image: "https://placehold.co/300x200",
+        tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
+        demoUrl: "#",
+        githubUrl: "#",
+        category: "fullstack",
+      },
+      {
+        title: "Portfolio Website",
+        description: "A responsive portfolio website for a photographer showcasing their work.",
+        image: "https://placehold.co/300x200",
+        tags: ["React", "GSAP", "Styled Components"],
+        demoUrl: "#",
+        githubUrl: "#",
+        category: "frontend",
+      },
+      {
+        title: "Task Management App",
+        description: "A collaborative task management application with real-time updates.",
+        image: "https://placehold.co/300x200",
+        tags: ["React", "Firebase", "Material UI"],
+        demoUrl: "#",
+        githubUrl: "#",
+        category: "fullstack",
+      },
+      {
+        title: "Weather App",
+        description: "A mobile app that provides real-time weather forecasts based on location.",
+        image: "https://placehold.co/300x200",
+        tags: ["React Native", "OpenWeather API"],
+        demoUrl: "#",
+        githubUrl: "#",
+        category: "mobile",
+      },
+      {
+        title: "Blog Platform",
+        description: "A content management system for creating and managing blog posts.",
+        image: "https://placehold.co/300x200",
+        tags: ["Next.js", "MongoDB", "Tailwind CSS"],
+        demoUrl: "#",
+        githubUrl: "#",
+        category: "fullstack",
+      },
+      {
+        title: "Fitness Tracker",
+        description: "A mobile application for tracking workouts and fitness progress.",
+        image: "https://placehold.co/300x200",
+        tags: ["React Native", "Redux", "Firebase"],
+        demoUrl: "#",
+        githubUrl: "#",
+        category: "mobile",
+      },
+    ];
+
+    // Initialize Feather icons
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize icons
+      feather.replace();
+      
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Initialize tabs
+      initTabs();
+      
+      // Render projects
+      renderProjects();
+      
+      // Initialize scroll animations
+      initScrollAnimations();
+      
+      // Initialize parallax effects
+      initParallaxEffects();
+      
+      // Initialize scroll to top button
+      initScrollToTop();
+    });
+
+    // Tabs functionality
+    function initTabs() {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active state from all tabs
+          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+          
+          // Set active state on clicked tab
+          tab.setAttribute('aria-selected', 'true');
+          
+          // Hide all tab content
+          document.querySelectorAll('.tabs-content').forEach(content => {
+            content.setAttribute('data-active', 'false');
+          });
+          
+          // Show selected tab content
+          const tabId = tab.getAttribute('data-tab');
+          document.querySelector(`.tabs-content[data-tab="${tabId}"]`).setAttribute('data-active', 'true');
+        });
+      });
+    }
+
+    // Render projects
+    function renderProjects() {
+      // Render all projects
+      const allProjectsContainer = document.querySelector('.tabs-content[data-tab="all"] .grid');
+      renderProjectsToContainer(projects, allProjectsContainer);
+      
+      // Render frontend projects
+      const frontendProjects = projects.filter(p => p.category === 'frontend');
+      const frontendContainer = document.querySelector('.tabs-content[data-tab="frontend"] .grid');
+      renderProjectsToContainer(frontendProjects, frontendContainer);
+      
+      // Render fullstack projects
+      const fullstackProjects = projects.filter(p => p.category === 'fullstack');
+      const fullstackContainer = document.querySelector('.tabs-content[data-tab="fullstack"] .grid');
+      renderProjectsToContainer(fullstackProjects, fullstackContainer);
+      
+      // Render mobile projects
+      const mobileProjects = projects.filter(p => p.category === 'mobile');
+      const mobileContainer = document.querySelector('.tabs-content[data-tab="mobile"] .grid');
+      renderProjectsToContainer(mobileProjects, mobileContainer);
+    }
+
+    function renderProjectsToContainer(projects, container) {
+      projects.forEach((project, index) => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'card fade-in';
+        projectCard.setAttribute('data-delay', (index + 1) * 100);
+        
+        projectCard.innerHTML = `
+          <div class="project-image">
+            <img src="${project.image}" alt="${project.title}" />
+          </div>
+          <div class="card-content p-4">
+            <h3 class="font-semibold text-lg mb-2">${project.title}</h3>
+            <p class="text-sm text-muted-foreground mb-4">${project.description}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              ${project.tags.map(tag => `<span class="badge badge-outline text-xs">${tag}</span>`).join('')}
+            </div>
+            <div class="flex gap-2">
+              <a href="${project.demoUrl}" class="button button-sm button-outline" target="_blank" rel="noopener noreferrer">
+                Live Demo
+              </a>
+              <a href="${project.githubUrl}" class="button button-sm button-outline" target="_blank" rel="noopener noreferrer">
+                <i data-feather="github" class="icon-sm mr-1"></i> Code
+              </a>
+            </div>
+          </div>
+        `;
+        
+        container.appendChild(projectCard);
+      });
+      
+      // Re-initialize feather icons for the newly added elements
+      feather.replace();
+    }
+
+    // Scroll animations
+    function initScrollAnimations() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.getAttribute('data-delay') || 0;
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+    }
+
+    // Parallax effects
+    function initParallaxEffects() {
+      const parallaxElements = document.querySelectorAll('.parallax-element');
+      
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        
+        parallaxElements.forEach(element => {
+          const speed = parseFloat(element.getAttribute('data-speed') || 0.5);
+          const direction = element.getAttribute('data-direction') || 'vertical';
+          const reverse = element.getAttribute('data-reverse') === 'true';
+          
+          const factor = reverse ? -1 : 1;
+          
+          if (direction === 'vertical') {
+            element.style.transform = `translateY(${scrollY * speed * factor}px)`;
+          } else {
+            element.style.transform = `translateX(${scrollY * speed * factor}px)`;
+          }
+        });
+      });
+    }
+
+    // Scroll to top button
+    function initScrollToTop() {
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          scrollToTopBtn.classList.add('visible');
+        } else {
+          scrollToTopBtn.classList.remove('visible');
+        }
+      });
+      
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  </script>
+</body>
+</html>
